@@ -1,19 +1,19 @@
-/* ---- Customize here: colors and fonts ---- */
+/* ---- Customize here: colors and fonts (palette from the 2026 visual board) ---- */
 :root {
-  --chalk: #12332d;      /* deep chalkboard green: hero, footer */
-  --chalk-ink: #eef4f0;  /* text on green */
-  --pencil: #f0b93a;     /* accent */
-  --bg: #f3f6f4;
-  --bg-alt: #e6ede9;
-  --ink: #16231f;
-  --muted: #4d5f58;
-  --line: #cbd8d1;
-  --head: "Bricolage Grotesque", system-ui, sans-serif;
-  --body: "DM Sans", system-ui, sans-serif;
+  color-scheme: dark;
+  --chalk: #0a1220;      /* deep ocean navy: top bar, hero, footer */
+  --chalk-ink: #ece4d6;  /* ivory text on navy */
+  --pencil: #c9a45c;     /* passport gold: accent */
+  --walnut: #8a5a3b;     /* warm wood brown: secondary accent */
+  --bg: #0f1a2c;
+  --bg-alt: #14233a;
+  --card: rgba(236, 228, 214, .045);
+  --ink: #ece4d6;
+  --muted: #a9b1bd;      /* silver */
+  --line: #2b3d58;
+  --head: "Inter", system-ui, sans-serif;
+  --body: "Inter", system-ui, sans-serif;
   --max: 1080px;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #0e1a17; --bg-alt: #13241f; --ink: #e8f0ec; --muted: #9db0a8; --line: #27403a; }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
@@ -21,17 +21,19 @@ body { margin: 0; font: 400 1.05rem/1.65 var(--body); background: var(--bg); col
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--pencil); outline-offset: 3px; }
-h1, h2, h3 { font-family: var(--head); line-height: 1.1; margin: 0 0 .6rem; }
+h1, h2, h3 { font-family: var(--head); letter-spacing: -.02em; line-height: 1.1; margin: 0 0 .6rem; }
 h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 800; }
 h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
 .wrap { width: min(var(--max), 100% - 2.5rem); margin-inline: auto; }
 .narrow { max-width: 760px; }
 .section { padding: 5rem 0; }
-.section.alt { background: var(--bg-alt); }
+main > .section:nth-of-type(odd) { background: var(--bg-alt); } /* stripes alternate automatically, so new sections just work */
+.plain { margin: 0; padding-left: 1.1rem; color: var(--muted); }
+.card strong { color: var(--ink); }
 .sub { color: var(--muted); max-width: 62ch; margin: 0 0 2rem; }
 
 /* top bar */
-.topbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 1.25rem; background: var(--chalk); color: var(--chalk-ink); }
+.topbar { border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .8rem 1.25rem; background: var(--chalk); color: var(--chalk-ink); }
 .brand { font: 800 1.15rem var(--head); text-decoration: none; }
 #nav { display: flex; gap: 1.25rem; }
 #nav a { text-decoration: none; font-weight: 500; padding: .25rem 0; border-bottom: 2px solid transparent; }
@@ -63,10 +65,10 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
 
 /* chips, grid, cards */
 .chips { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 1.5rem 0; }
-.chips li { padding: .3rem .85rem; border: 1.5px solid var(--line); border-radius: 999px; font-size: .95rem; background: var(--bg); }
+.chips li { padding: .3rem .85rem; border: 1.5px solid var(--line); border-radius: 999px; font-size: .95rem; background: var(--card); }
 .grid { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
 .grid.two { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
-.card { background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 1.25rem; display: flex; flex-direction: column; gap: .4rem; }
+.card { background: var(--card); border: 1.5px solid var(--line); border-radius: 10px; padding: 1.25rem; display: flex; flex-direction: column; gap: .4rem; }
 .card p { margin: 0; color: var(--muted); font-size: .98rem; }
 .card a { margin-top: auto; font-weight: 700; text-decoration-color: var(--pencil); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .photos .card { padding: 0; overflow: hidden; }
@@ -79,7 +81,7 @@ h3 { font-size: 1.15rem; font-weight: 700; line-height: 1.25; }
 /* timeline */
 .timeline { list-style: none; padding: 0 0 0 1.5rem; margin: 0; border-left: 3px solid var(--pencil); }
 .timeline li { position: relative; padding-bottom: 2rem; }
-.timeline li::before { content: ""; position: absolute; left: -2.05rem; top: .4rem; width: 14px; height: 14px; border-radius: 50%; background: var(--pencil); border: 3px solid var(--bg); }
+.timeline li::before { content: ""; position: absolute; left: -2.05rem; top: .4rem; width: 14px; height: 14px; border-radius: 50%; background: var(--walnut); border: 3px solid var(--bg); }
 .timeline time { font-weight: 700; color: var(--muted); }
 .timeline p { margin: .3rem 0 0; }
 
@@ -100,4 +102,25 @@ details p { margin: .6rem 0 0; color: var(--muted); }
 .footer h2 { max-width: 16ch; margin-bottom: 1.5rem; }
 .small { margin-top: 2.5rem; font-size: .9rem; opacity: .75; }
 
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+/* ---- Animations (simple, and switched off for people who prefer reduced motion) ---- */
+.hero { position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: -25%; pointer-events: none;
+  background: radial-gradient(ellipse at 18% 30%, rgba(201,164,92,.14), transparent 42%),
+              radial-gradient(ellipse at 82% 72%, rgba(80,120,180,.24), transparent 46%);
+  animation: drift 20s ease-in-out infinite alternate; }
+.hero .wrap { position: relative; }
+@keyframes drift { from { transform: translate3d(-3%, -2%, 0) scale(1); } to { transform: translate3d(3%, 3%, 0) scale(1.08); } }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+.hero .kicker, .hero h1, .hero .lead, .hero .actions, .portrait { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+.hero h1 { animation-delay: .12s; } .hero .lead { animation-delay: .26s; } .hero .actions { animation-delay: .4s; } .portrait { animation-delay: .3s; }
+html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+html.js .reveal.in { opacity: 1; transform: none; }
+.card { transition: transform .25s ease, border-color .25s ease, background .25s ease; }
+.card:hover { transform: translateY(-4px); border-color: var(--pencil); background: rgba(236,228,214,.08); }
+.photos img { transition: transform .6s ease; }
+.photos .card:hover img { transform: scale(1.05); }
+.chips li { transition: border-color .2s, transform .2s; }
+.chips li:hover { border-color: var(--pencil); transform: translateY(-2px); }
+.portrait { transition: transform .4s ease; } .portrait:hover { transform: rotate(-2deg) scale(1.02); }
+details p { animation: rise .35s ease both; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before { transition: none !important; animation: none !important; } html.js .reveal { opacity: 1; transform: none; } }
