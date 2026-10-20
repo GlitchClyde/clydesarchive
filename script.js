@@ -1,3 +1,4 @@
+document.documentElement.classList.add("js");
 // Build the nav from every <section data-nav="Label">. Add a section and its link appears automatically.
 const nav = document.getElementById("nav");
 document.querySelectorAll("section[data-nav]").forEach((s) => {
@@ -23,3 +24,15 @@ nav.addEventListener("click", () => {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Gentle reveal: each section's content fades up once as it scrolls into view
+const targets = document.querySelectorAll(".section > .wrap");
+targets.forEach((t) => t.classList.add("reveal"));
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  targets.forEach((t) => io.observe(t));
+} else {
+  targets.forEach((t) => t.classList.add("in"));
+}
