@@ -36,3 +36,15 @@ if ("IntersectionObserver" in window) {
 } else {
   targets.forEach((t) => t.classList.add("in"));
 }
+
+// Highlight the nav link of the section currently in view
+const links = [...nav.querySelectorAll("a")];
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    links.forEach((a) => a.removeAttribute("aria-current"));
+    const hit = links.find((a) => a.getAttribute("href") === "#" + e.target.id);
+    if (hit) hit.setAttribute("aria-current", "true");
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll("section[data-nav]").forEach((s) => spy.observe(s));
