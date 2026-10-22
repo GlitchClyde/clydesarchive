@@ -102,6 +102,18 @@ details p { margin: .6rem 0 0; color: var(--muted); }
 .footer h2 { max-width: 16ch; margin-bottom: 1.5rem; }
 .small { margin-top: 2.5rem; font-size: .9rem; opacity: .75; }
 
+/* ---- Accessibility and touch (44px minimum targets) ---- */
+.skip { position: absolute; left: .75rem; top: -4rem; z-index: 20; background: var(--pencil); color: #1a1405; padding: .7rem 1.1rem; border-radius: 8px; font-weight: 700; text-decoration: none; transition: top .2s; }
+.skip:focus { top: .75rem; }
+.menu-btn { min-height: 44px; }
+#nav a { display: inline-flex; align-items: center; min-height: 44px; padding-block: 0; }
+#nav a[aria-current="true"] { border-color: var(--pencil); }
+.card a { display: inline-flex; align-items: center; min-height: 44px; }
+summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 44px; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--pencil); font-size: 1.5rem; line-height: 1; transition: transform .2s ease; }
+details[open] summary::after { transform: rotate(45deg); }
+
 /* ---- Animations (simple, and switched off for people who prefer reduced motion) ---- */
 .hero { position: relative; overflow: hidden; }
 .hero::before { content: ""; position: absolute; inset: -25%; pointer-events: none;
